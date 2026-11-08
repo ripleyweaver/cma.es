@@ -1,0 +1,17 @@
+/* ============================================================
+   CMA ES Content — chapter overlay
+   Minimal: only change Bear's default #444 text to true black
+   for accessibility. Everything else stays as Bear exports it.
+============================================================ */
+
+:root {
+  --base-text-color: #000000 !important;
+  --document-text-color: #000000 !important;
+}
+
+html, body, .document-wrapper,
+p, li, td, th, dd, dt, span,
+h1, h2, h3, h4, h5, h6,
+h1.setext, h2.setext {
+  color: #000000 !important;
+}

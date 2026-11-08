@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="CCMA ES">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="./favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#232323">
+<meta name="theme-color" content="#1A1A1A">
+<title>CCMA ES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CMA ES Content — home
+     Mirrors cma.study / CMA ES app look: warm cream in light,
+     soft charcoal in dark, Nunito Sans, rounded cards.
+  ============================================================ */
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :root {
+    --bg: #F7F4EF;
+    --bg2: #E9E2D8;
+    --card: #FFFDF7;
+    --border: rgba(31, 29, 23, 0.18);
+    --border-mid: rgba(31, 29, 23, 0.22);
+    --ink: #171713;
+    --ink2: #333128;
+    --muted: #625D52;
+    --green: #145B3F;
+    --on-green: #FFFFFF;
+
+    --shadow-sm: 0 1px 2px rgba(38, 35, 28, 0.035),
+                 0 6px 18px rgba(38, 35, 28, 0.035);
+
+    --r: 14px;
+    --r-sm: 10px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-7: 40px;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1.0625rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+
+    --font:
+      "Nunito Sans",
+      ui-rounded,
+      "SF Pro Rounded",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A1A1A;
+      --bg2: #222222;
+      --card: #262626;
+      --border: rgba(255, 255, 255, 0.10);
+      --border-mid: rgba(255, 255, 255, 0.18);
+      --ink: #EDEDEC;
+      --ink2: #C7C5C2;
+      --muted: #9B9894;
+      --green: #27B872;
+      --on-green: #0F2818;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1A1A1A;
+    --bg2: #222222;
+    --card: #262626;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-mid: rgba(255, 255, 255, 0.18);
+    --ink: #EDEDEC;
+    --ink2: #C7C5C2;
+    --muted: #9B9894;
+    --green: #27B872;
+    --on-green: #0F2818;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    max-width: 540px;
+    margin: 0 auto;
+    padding:
+      calc(var(--space-5) + env(safe-area-inset-top, 0px))
+      20px
+      calc(var(--space-7) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ========== Page title ========== */
+  /* Top row holds the H1 and the theme toggle */
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-7);
+  }
+
+  h1 {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  /* Theme switcher — circular pill button */
+  .theme-switcher {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card, var(--bg2));
+    color: var(--ink);
+    font-size: 1.1rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: transform 0.15s ease, background 0.15s ease,
+                border-color 0.15s ease;
+  }
+
+  .theme-switcher:active {
+    transform: scale(0.94);
+  }
+
+  @media (hover: hover) {
+    .theme-switcher:hover {
+      background: var(--bg2);
+      border-color: var(--muted);
+    }
+  }
+
+  .theme-switcher:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+
+  /* ========== Module cards (same shape as CMA ES app pills) ========== */
+  .module-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .module-card {
+    padding: var(--space-2) 0 0;
+  }
+
+  .module-num {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .module-title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: var(--space-4);
+  }
+
+  .lang-buttons {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .lang-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 12px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border-mid);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease,
+                border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .lang-btn:active {
+    transform: scale(0.985);
+  }
+
+  @media (hover: hover) {
+    .lang-btn:hover {
+      background: var(--green);
+      color: var(--on-green);
+      border-color: var(--green);
+    }
+  }
+
+  .lang-btn:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+
+  /* ========== Version footer ========== */
+  .version {
+    margin-top: var(--space-7);
+    text-align: center;
+    font-size: 0.625rem;
+    color: var(--muted);
+    opacity: 0.55;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-row">
+  <h1>CCMA ES</h1>
+  <button type="button" class="theme-switcher" id="theme-switcher"
+          onclick="cycleThemeMode()"
+          aria-label="Theme: Dark" title="Theme: Dark">
+    <span id="theme-switcher-icon" aria-hidden="true">🌙</span>
+  </button>
+</div>
+
+<div class="module-list">
+
+  <div class="module-card">
+    <div class="module-num">Module 01</div>
+    <div class="module-title">Foundational Knowledge &amp; Basic Science</div>
+    <div class="lang-buttons">
+      <a class="lang-btn" href="./module-01.en.html">English</a>
+      <a class="lang-btn" href="./module-01.es.html">Español</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="version">v0.9</div>
+
+<script>
+  // Theme: ☀️/🌙 toggle with localStorage persistence.
+  // Falls back to the device's prefers-color-scheme if nothing saved.
+  var THEME_KEY = 'ccma_es_theme';
+  var THEME_COLORS = { light: '#F7F4EF', dark: '#1A1A1A' };
+  // Icon shows what tapping will DO: in light mode show 🌙 (go dark), in dark show ☀️ (go light)
+  var THEME_ICONS  = { light: '🌙', dark: '☀️' };
+
+  function applyTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', THEME_COLORS[mode]);
+    var btn = document.getElementById('theme-switcher');
+    var icon = document.getElementById('theme-switcher-icon');
+    var label = 'Theme: ' + (mode === 'dark' ? 'Dark' : 'Light');
+    if (icon) icon.textContent = THEME_ICONS[mode];
+    if (btn) {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    }
+  }
+
+  function cycleThemeMode() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = (current === 'dark') ? 'light' : 'dark';
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    applyTheme(next);
+  }
+
+  // Initialize on load
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    var mode;
+    if (saved === 'light' || saved === 'dark') {
+      mode = saved;
+    } else {
+      mode = (window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+             ? 'dark' : 'light';
+    }
+    applyTheme(mode);
+  })();
+</script>
+
+</body>
+</html>
